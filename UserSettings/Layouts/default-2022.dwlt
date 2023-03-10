@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 28
+  controlID: 50
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_Assets
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000186c00001a6c00001c6c00001e6c0000206c0000226c0000246c0000266c0000
+    m_ExpandedIDs: ffffffff00000000186c00001a6c00001c6c00001e6c0000226c0000e66d00009c6e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -542,9 +542,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 06fbffff
+      m_SelectedIDs: 66eeffff
+      m_LastClickedID: -4506
+      m_ExpandedIDs: a2f8ffff06fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -560,7 +560,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 2}
+        m_ClientGUIView: {fileID: 11}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -911,9 +911,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 9.287292, y: -5.0539713, z: -9.430358}
+    m_Target: {x: 12.041815, y: -3.261341, z: 7.4489045}
     speed: 2
-    m_Value: {x: 9.287292, y: -5.0539713, z: -9.430358}
+    m_Value: {x: 12.041815, y: -3.261341, z: 7.4489045}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -959,13 +959,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.079562426, y: -0.9084407, z: 0.20248632, w: -0.35695106}
+    m_Target: {x: -0.1315818, y: -0.51509315, z: 0.0803838, w: -0.843157}
     speed: 2
-    m_Value: {x: -0.079562046, y: -0.90843636, z: 0.20248535, w: -0.35694936}
+    m_Value: {x: -0.13158114, y: -0.5150906, z: 0.0803834, w: -0.84315276}
   m_Size:
-    m_Target: 11.613375
+    m_Target: 9.992785
     speed: 2
-    m_Value: 11.613375
+    m_Value: 9.992785
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1110,9 +1110,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: -1582
-    y: 563
-    width: 1203
-    height: 367
+    y: 562
+    width: 1202
+    height: 368
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
