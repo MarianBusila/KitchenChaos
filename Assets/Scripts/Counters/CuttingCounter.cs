@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CuttingCounter : BaseCounter, IHasProgress
 {
+    public static event EventHandler OnAnyCut;
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler OnCut;
 
@@ -66,6 +67,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
             int cuttingProgressMax = GetCuttingRecipeSOFromInput(GetKitchenObject().GetKitchenObjectSO()).cuttingProgressMax;
             OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs { progressNormalized = (float)cuttingProgress / cuttingProgressMax });
             OnCut?.Invoke(this, EventArgs.Empty);
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
             if (cuttingProgress >= cuttingProgressMax)
             {
                 KitchenObjectSO outputKitchenObjectsSO = GetOutputFromInput(GetKitchenObject().GetKitchenObjectSO());
