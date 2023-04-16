@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8687084258529842949}
   - component: {fileID: 756873453018526031}
   - component: {fileID: -835541848855321038}
+  - component: {fileID: 4942008525662508304}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -66,7 +67,7 @@ Transform:
   - {fileID: 8507041459492631132}
   - {fileID: 6903824691304166647}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8687084258529842949
 MonoBehaviour:
@@ -81,7 +82,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
-  gameInput: {fileID: 0}
   countersLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -114,6 +114,32 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &4942008525662508304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8383271379349132106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ed3dfb7692e374ca413419c3aeadb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 0
+  SyncPositionZ: 1
+  SyncRotAngleX: 0
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 0
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!1001 &5416653619654424127
 PrefabInstance:
   m_ObjectHideFlags: 0
