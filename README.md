@@ -11,3 +11,4 @@ A game based on the following tutorials from CodeMonkey.
 - Use server authoritative  for competitive P2P games, where there is a chance a player could modify the build to cheat. Use [NetworkTransfrom](https://docs-multiplayer.unity3d.com/netcode/current/components/networktransform) to sync data between players by annotating the code with __ServerRpc__ attribute. 
 - Server authoritative is more complex to implement and requires extra validation on the data the client sends. You will also have to implement __client side prediction__.
 - use [OwnerNetworkAnimator](https://docs-multiplayer.unity3d.com/netcode/current/components/networkanimator#owner-authoritative-mode) component to sync animations using client authoritative
+- use __[ClientRpc]__ attribute to mark code to be executed on the client, though it is the server that will invoke this call to be executed by the clients. Note that the methods must end with __ClientRpc__ suffix
