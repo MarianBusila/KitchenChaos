@@ -17,8 +17,9 @@ public class PlatesCounterVisual : MonoBehaviour
 
     private void Start()
     {
-        platesCounter.OnPlateSpawned += PlatesCounter_OnPlateSpawned;
-        platesCounter.OnPlateRemoved += PlatesCounter_OnPlateRemoved;
+        // TODO: fix because plates are being spawned in both by client and server
+        //platesCounter.OnPlateSpawned += PlatesCounter_OnPlateSpawned;
+        //platesCounter.OnPlateRemoved += PlatesCounter_OnPlateRemoved;
     }
 
     private void PlatesCounter_OnPlateRemoved(object sender, System.EventArgs e)
