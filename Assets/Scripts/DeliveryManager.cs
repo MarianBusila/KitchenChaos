@@ -88,12 +88,7 @@ public class DeliveryManager : NetworkBehaviour
 
                 if(plateContentsMatchesRecipe)
                 {
-                    // player delivered the correct recipe
-                    Debug.Log("Player delivered the correct recipe");
-                    waitingRecipeSOList.RemoveAt(i);
-                    OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
-                    OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
-                    successfulRecipesAmount++;
+                    DeliverCorrectRecipeServerRpc(i);
                     return;
                 }
             }
@@ -101,6 +96,35 @@ public class DeliveryManager : NetworkBehaviour
 
         // no matches found
         // player did not deliver a correct recipe
+        DeliverIncorrectRecipeServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership =false)]
+    private void DeliverCorrectRecipeServerRpc(int waitingRecipeSOListIndex)
+    {
+        DeliverCorrectRecipeClientRpc(waitingRecipeSOListIndex);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void DeliverIncorrectRecipeServerRpc()
+    {
+        DeliverIncorrectRecipeClientRpc();
+    }
+
+    [ClientRpc]
+    private void DeliverCorrectRecipeClientRpc(int waitingRecipeSOListIndex)
+    {
+        // player delivered the correct recipe
+        Debug.Log("Player delivered the correct recipe");
+        waitingRecipeSOList.RemoveAt(waitingRecipeSOListIndex);
+        OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+        OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
+        successfulRecipesAmount++;
+    }
+
+    [ClientRpc]
+    private void DeliverIncorrectRecipeClientRpc()
+    {
         Debug.Log("Player did not deliver a correct recipe");
         OnRecipeFailure?.Invoke(this, EventArgs.Empty);
     }
