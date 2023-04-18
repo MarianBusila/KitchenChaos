@@ -32,3 +32,5 @@ A game based on the following tutorials from CodeMonkey.
 - when spawning objects with __[ClientRpc]__ or __[ServerRpc]__, it is a good practice to use indexes as parameters to the function and keep a list of prefabs. This way, you do not have to serialize a complex object over the network.
 
 - use __NetworkObjectReference__ to reference an existing object over the network
+
+- __[ServerRpc(RequireOwnerShip=false)]__ means that all the clients can call that code to run on the server
