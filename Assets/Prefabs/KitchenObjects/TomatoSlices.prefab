@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9018706180529232952}
   - component: {fileID: 7529769179554110239}
   - component: {fileID: -221822431088309425}
+  - component: {fileID: -1127089988248406035}
   m_Layer: 0
   m_Name: TomatoSlices
   m_TagString: Untagged
@@ -63,6 +64,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &-1127089988248406035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971473630184041673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25d02cc7dc22aa42963b5017e131883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &458440025701047136
 PrefabInstance:
   m_ObjectHideFlags: 0
