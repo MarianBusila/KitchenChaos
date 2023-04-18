@@ -23,6 +23,8 @@ A game based on the following tutorials from CodeMonkey.
 
 - use the __[ServerRpc]__ attribute to mark the code to be executed on the server. Note that the method must end with __ServerRpc__ suffix. 
 
+- __[ServerRpc(RequireOwnerShip=false)]__ means that all the clients can call that code to run on the server
+
 - objects that need to be spawned on the network, must be added in the __NetworkManager__ component, under the NetworkPrefabs. 
 
 - object spawning must be done on the server
@@ -33,4 +35,3 @@ A game based on the following tutorials from CodeMonkey.
 
 - use __NetworkObjectReference__ to reference an existing object over the network
 
-- __[ServerRpc(RequireOwnerShip=false)]__ means that all the clients can call that code to run on the server
