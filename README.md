@@ -37,3 +37,7 @@ A game based on the following tutorials from CodeMonkey.
 
 - use __NetworkObjectReference__ to reference an existing object over the network
 
+- only server can modify a __NetworkVariable__
+
+- __NetworkVariable__ has an __OnValueChanged__ event we can subscribe to
+
