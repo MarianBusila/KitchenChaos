@@ -24,8 +24,8 @@ public class KitchenGameManager : NetworkBehaviour
     private NetworkVariable<State> state = new NetworkVariable<State>(State.WaitingToStart);
     private bool isLocalPlayerReady;
 
-    private float countdownToStartTimer = 3f;
-    private float gamePlayingTimer;
+    private NetworkVariable<float> countdownToStartTimer = new NetworkVariable<float>(3f);
+    private NetworkVariable<float> gamePlayingTimer = new NetworkVariable<float>(0f);
     private float gamePlayingTimerMax = 300f;
 
     private bool isGamePaused = false;
@@ -61,8 +61,8 @@ public class KitchenGameManager : NetworkBehaviour
         if(state.Value == State.WaitingToStart)
         {
             isLocalPlayerReady = true;
-            SetPlayerReadyServerRpc();
             OnLocalPlayerReadyChanged?.Invoke(this, EventArgs.Empty);
+            SetPlayerReadyServerRpc();            
         }
     }    
 
@@ -85,6 +85,7 @@ public class KitchenGameManager : NetworkBehaviour
 
         if(allClientsReady)
         {
+            Debug.Log("All players ready");
             state.Value = State.CountdownToStart;
         }
     }
@@ -104,16 +105,16 @@ public class KitchenGameManager : NetworkBehaviour
             case State.WaitingToStart:
                 break;
             case State.CountdownToStart:
-                countdownToStartTimer -= Time.deltaTime;
-                if (countdownToStartTimer < 0f)
+                countdownToStartTimer.Value -= Time.deltaTime;
+                if (countdownToStartTimer.Value < 0f)
                 {
                     state.Value = State.GamePlaying;
-                    gamePlayingTimer = gamePlayingTimerMax;
+                    gamePlayingTimer.Value = gamePlayingTimerMax;
                 }
                 break;
             case State.GamePlaying:
-                gamePlayingTimer -= Time.deltaTime;
-                if (gamePlayingTimer < 0f)
+                gamePlayingTimer.Value -= Time.deltaTime;
+                if (gamePlayingTimer.Value < 0f)
                 {
                     state.Value = State.GameOver;                    
                 }
@@ -145,12 +146,12 @@ public class KitchenGameManager : NetworkBehaviour
 
     public float GetCountdownToStartTimer()
     {
-        return countdownToStartTimer;
+        return countdownToStartTimer.Value;
     }
 
     public float GetGamePlayingTimerNormalized()
     {
-        return 1f - gamePlayingTimer / gamePlayingTimerMax;
+        return 1f - gamePlayingTimer.Value / gamePlayingTimerMax;
     }
 
     public void TogglePauseGame()
