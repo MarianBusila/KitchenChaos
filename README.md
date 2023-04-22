@@ -39,5 +39,7 @@ A game based on the following tutorials from CodeMonkey.
 
 - only server can modify a __NetworkVariable__
 
-- __NetworkVariable__ has an __OnValueChanged__ event we can subscribe to
+- __NetworkVariable__ has an __OnValueChanged__ event we can subscribe to. The subscription to the event should be done in the method override __OnNetworkSpawn__.
+
+- __OwnerClientId__ is not a sequential number. A client can leave and rejoin later and it will get another id.
 
