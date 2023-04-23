@@ -43,3 +43,5 @@ A game based on the following tutorials from CodeMonkey.
 
 - __OwnerClientId__ is not a sequential number. A client can leave and rejoin later and it will get another id.
 
+- synchronizing data can be done via __rpc__ calls or __network variables__. If a client joins late, it will receive the current state of network variables, but it will not receive any of the rpc calls that were done in the past.
+
