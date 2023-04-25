@@ -35,6 +35,8 @@ A game based on the following tutorials from CodeMonkey.
 
 - when spawning objects with __[ClientRpc]__ or __[ServerRpc]__, it is a good practice to use indexes as parameters to the function and keep a list of prefabs. This way, you do not have to serialize a complex object over the network.
 
+- complex objects can be serialzed by implementing __INetworkSerializable__ interface
+
 - use __NetworkObjectReference__ to reference an existing object over the network
 
 - only server can modify a __NetworkVariable__
