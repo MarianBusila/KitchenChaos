@@ -47,3 +47,11 @@ A game based on the following tutorials from CodeMonkey.
 
 - synchronizing data can be done via __rpc__ calls or __network variables__. If a client joins late, it will receive the current state of network variables, but it will not receive any of the rpc calls that were done in the past.
 
+
+## Lobby Notes
+
+- a project id must be created in [unity dashboard](https://dashboard.unity3d.com) and the lobby must be enabled there
+
+- Lobby package must be added in Package Manager
+
+- __LobbyService__ has methods to create and join a lobby
