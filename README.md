@@ -55,3 +55,5 @@ A game based on the following tutorials from CodeMonkey.
 - Lobby package must be added in Package Manager
 
 - __LobbyService__ has methods to create and join a lobby
+
+- a lobby gets destroyed automatically after 30 seconds, so a heartbit must be implemented
