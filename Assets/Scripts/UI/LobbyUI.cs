@@ -17,6 +17,7 @@ public class LobbyUI : MonoBehaviour
     private void Awake()
     {
         mainMenuButton.onClick.AddListener(() => {
+            KitchenGameLobby.Instance.LeaveLobby();
             Loader.Load(Loader.Scene.MainMenuScene);
         });
         createLobbyButton.onClick.AddListener(() => {
