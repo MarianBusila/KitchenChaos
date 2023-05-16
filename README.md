@@ -47,6 +47,8 @@ A game based on the following tutorials from CodeMonkey.
 
 - synchronizing data can be done via __rpc__ calls or __network variables__. If a client joins late, it will receive the current state of network variables, but it will not receive any of the rpc calls that were done in the past.
 
+- when implementing the __INetworkSerializable__, the properties must be value types. Use __FixedString64Bytes__ type instead of __string__.
+
 
 ## Lobby Notes
 
