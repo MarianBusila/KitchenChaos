@@ -52,10 +52,20 @@ A game based on the following tutorials from CodeMonkey.
 
 ## Lobby Notes
 
-- a project id must be created in [unity dashboard](https://dashboard.unity3d.com) and the lobby must be enabled there
+- a project id must be created in [unity dashboard](https://dashboard.unity3d.com) and 
 
-- Lobby package must be added in Package Manager
+- the project must be linked in UnityEditor -> Project Settings -> Services
+
+- Lobby must be setup / enabled in the dashboard
+
+- Lobby package must be added from Package Manager
 
 - __LobbyService__ has methods to create and join a lobby
 
 - a lobby gets destroyed automatically after 30 seconds, so a heartbit must be implemented
+
+## Relay Notes
+
+- Relay must be setup / enabled in the dashboard
+
+- Relay package must be added from PackageManager
