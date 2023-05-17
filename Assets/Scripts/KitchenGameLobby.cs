@@ -16,10 +16,16 @@ public class KitchenGameLobby : MonoBehaviour
     public event EventHandler OnJoinStarted;
     public event EventHandler OnQuickJoinFailed;
     public event EventHandler OnJoinFailed;
+    public event EventHandler<OnLobbyListChangedEventArgs> OnLobbyListChanged;
+    public class OnLobbyListChangedEventArgs : EventArgs
+    {
+        public List<Lobby> lobbyList;
+    }
 
     private Lobby joinedLobby;
 
     private float heartbeatTimer;
+    private float listLobbiesTimer;
 
     private void Awake()
     {
@@ -36,15 +42,17 @@ public class KitchenGameLobby : MonoBehaviour
         {
             InitializationOptions initializationOptions = new InitializationOptions();
             initializationOptions.SetProfile(UnityEngine.Random.Range(0, 10000).ToString()); // to be able to test on the same machine multiple builds
-            await UnityServices.InitializeAsync();
+            await UnityServices.InitializeAsync(initializationOptions);
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            Debug.Log("PLAYERID: " + AuthenticationService.Instance.PlayerId);
         }
     }
 
     private void Update()
     {
         HandleHeartbeat();
+        HandlePeriodicListLobbies();
     }
 
     private void HandleHeartbeat()
@@ -62,9 +70,44 @@ public class KitchenGameLobby : MonoBehaviour
         }
     }
 
+    private void HandlePeriodicListLobbies()
+    {
+        if (joinedLobby == null && AuthenticationService.Instance.IsSignedIn)
+        {
+            listLobbiesTimer -= Time.deltaTime;
+            if (listLobbiesTimer <= 0f)
+            {
+                float listLobbiesTimerMax = 5f;
+                listLobbiesTimer = listLobbiesTimerMax;
+
+                ListLobbies();
+            }
+        }
+    }
+
     private bool IsLobbyHost()
     {
         return joinedLobby != null && joinedLobby.HostId == AuthenticationService.Instance.PlayerId;
+    }
+
+    private async void ListLobbies()
+    {
+        try
+        {
+            QueryLobbiesOptions queryLobbiesOptions = new QueryLobbiesOptions
+            {
+                Filters = new List<QueryFilter>
+            {
+                new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT)
+            }
+            };
+            QueryResponse queryResponse = await LobbyService.Instance.QueryLobbiesAsync(queryLobbiesOptions);
+            OnLobbyListChanged?.Invoke(this, new OnLobbyListChangedEventArgs { lobbyList = queryResponse.Results });
+        } catch(LobbyServiceException ex)
+        {
+            Debug.Log(ex);
+        }
+        
     }
 
     public async void CreateLobby(string lobbyName, bool isPrivate)
@@ -106,6 +149,22 @@ public class KitchenGameLobby : MonoBehaviour
         try
         {
             joinedLobby = await LobbyService.Instance.JoinLobbyByCodeAsync(lobbyCode);
+
+            KitchenGameMultiplayer.Instance.StartClient();
+        }
+        catch (LobbyServiceException ex)
+        {
+            OnJoinFailed?.Invoke(this, EventArgs.Empty);
+            Debug.Log(ex);
+        }
+    }
+
+    public async void JoinWithId(string lobbyId)
+    {
+        OnJoinStarted?.Invoke(this, EventArgs.Empty);
+        try
+        {
+            joinedLobby = await LobbyService.Instance.JoinLobbyByIdAsync(lobbyId);
 
             KitchenGameMultiplayer.Instance.StartClient();
         }
