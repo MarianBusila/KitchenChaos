@@ -49,6 +49,8 @@ A game based on the following tutorials from CodeMonkey.
 
 - when implementing the __INetworkSerializable__, the properties must be value types. Use __FixedString64Bytes__ type instead of __string__.
 
+- when using NetStatsMonitor to monitor the network traffic, the UI is shown only in the editor and if the build is a Development Build. This can be enabled in BuildSettings window.
+
 
 ## Lobby Notes
 
@@ -63,6 +65,8 @@ A game based on the following tutorials from CodeMonkey.
 - __LobbyService__ has methods to create and join a lobby
 
 - a lobby gets destroyed automatically after 30 seconds, so a heartbit must be implemented
+
+- __NetworkManager__ has a __Protocol__ property. This can be increased (for example, after a bug fix), so that players with the same build can join a lobby
 
 ## Relay Notes
 
