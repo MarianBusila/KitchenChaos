@@ -12,7 +12,7 @@ public class KitchenGameMultiplayer : NetworkBehaviour
     private const string PLAYER_PREFS_PLAYER_NAME_MULTIPLAYER = "PlayerNameMultiplayer";
     public static KitchenGameMultiplayer Instance { get; private set; }
 
-    public static bool playMultiplayer;
+    public static bool playMultiplayer = true;
 
     public event EventHandler OnTryingToJoinGame;
     public event EventHandler OnFailedToJoinGame;
